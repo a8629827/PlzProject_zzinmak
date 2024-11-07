@@ -46,4 +46,14 @@ public class UserServiceImpl implements UserService {
         // User를 저장하고 Address도 함께 저장될 수 있도록 한다
         userRepository.save(user);
     }
+
+    @Override
+    public User getCurrentUser() {
+        return null;
+    }
+
+    @Override
+    public void updateUser(User user) {
+
+    }
 }

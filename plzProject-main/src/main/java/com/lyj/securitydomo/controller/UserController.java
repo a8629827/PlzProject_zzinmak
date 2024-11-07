@@ -28,6 +28,9 @@ public class UserController {
     private final AddressRepository addressRepository;
     private final UserService userService;
 
+
+
+
     @GetMapping("/join")
     public void join(){
     }
@@ -57,6 +60,30 @@ public class UserController {
     }
     @GetMapping("login")
     public void login(){
+    }
+
+
+    // 마이페이지 정보 조회 (GET 요청)
+    @GetMapping("/myPage")
+    public String getMyPage(Model model) {
+        // 현재 로그인한 사용자 정보를 가져옵니다.
+        User user = userService.getCurrentUser(); // 현재 로그인한 사용자의 정보를 가져오는 메소드 (로그인 처리 방식에 따라 달라질 수 있습니다.)
+
+        // 모델에 사용자 정보를 추가하여 뷰로 전달합니다.
+        model.addAttribute("user", user);
+
+        // 마이페이지 HTML 뷰를 반환합니다.
+        return "myPage";
+    }
+
+    // 사용자 정보 수정 처리 (POST 요청)
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute User user) {
+        // 사용자가 수정한 정보로 사용자 업데이트
+        userService.updateUser(user);
+
+        // 업데이트 후 마이페이지로 리다이렉트
+        return "redirect:/user/myPage";
     }
 
 }

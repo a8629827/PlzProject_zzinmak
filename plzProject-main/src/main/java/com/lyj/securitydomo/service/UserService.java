@@ -12,4 +12,8 @@ public interface UserService {
     List<UserDTO> getAllUsers();
 
     void save(User user);
+
+    User getCurrentUser();
+
+    void updateUser(User user);
 }

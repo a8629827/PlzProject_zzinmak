@@ -44,17 +44,58 @@
         <input type="text" class="form-control" id="gender" placeholder="Enter gender" name="gender" required>
       </div>
 
-      <!-- 주소 시 입력 필드 -->
+      <!-- 주소 시 선택 필드 -->
       <div class="form-group mt-3">
         <label for="city">시:</label>
-        <input type="text" class="form-control" id="city" placeholder="예: 서울" name="city" required>
+        <select class="form-control" id="city" name="city" required onchange="updateDistricts()">
+          <option value="">시를 선택하세요</option>
+          <option value="서울">서울</option>
+          <option value="부산">부산</option>
+          <option value="대구">대구</option>
+          <option value="인천">인천</option>
+          <!-- 추가 시 옵션들 -->
+        </select>
       </div>
 
-      <!-- 주소 구 입력 필드 -->
+      <!-- 주소 구 선택 필드 -->
       <div class="form-group mt-3">
         <label for="state">구:</label>
-        <input type="text" class="form-control" id="state" placeholder="예: 강남구" name="state" required>
+        <select class="form-control" id="state" name="state" required>
+          <option value="">구를 선택하세요</option>
+          <!-- 구 옵션들은 JavaScript로 동적으로 추가됩니다 -->
+        </select>
       </div>
+
+      <script>
+        // 시에 따른 구 목록
+        const districts = {
+          서울: ["강남구", "강동구", "강북구", "강서구", "관악구"],
+          부산: ["해운대구", "부산진구", "동래구", "남구"],
+          대구: ["수성구", "달서구", "중구"],
+          인천: ["미추홀구", "연수구", "남동구"]
+          // 추가 구 목록
+        };
+
+        // 선택한 시에 따라 구 목록 업데이트
+        function updateDistricts() {
+          const citySelect = document.getElementById("city");
+          const stateSelect = document.getElementById("state");
+          const selectedCity = citySelect.value;
+
+          // 구 옵션 초기화
+          stateSelect.innerHTML = '<option value="">구를 선택하세요</option>';
+
+          // 선택된 시에 맞는 구 옵션 추가
+          if (selectedCity && districts[selectedCity]) {
+            districts[selectedCity].forEach(district => {
+              const option = document.createElement("option");
+              option.value = district;
+              option.textContent = district;
+              stateSelect.appendChild(option);
+            });
+          }
+        }
+      </script>
 
       <!-- 폼 제출 및 초기화 버튼 -->
       <div class="form-group mt-3">

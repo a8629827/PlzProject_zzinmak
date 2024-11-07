@@ -12,4 +12,7 @@ public class UserDTO {
     private LocalDate birthDate;
     private String gender;
     private String role;
+    private String email;
+    private String city;
+    private String state;
 }

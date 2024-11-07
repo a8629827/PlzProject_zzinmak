@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/basic.html}">
+
+<div layout:fragment="content">
+  <div class="container">
+    <h3>My Page</h3>
+    <form action="/user/update" method="post">
+
+      <!-- 이름 수정 필드 -->
+      <div class="form-group mt-3">
+        <label for="name">이름:</label>
+        <input type="text" class="form-control" id="name" name="name" value="[[${user.name}]]" required>
+      </div>
+
+      <!-- 생년월일 수정 필드 -->
+      <div class="form-group mt-3">
+        <label for="birthDate">생년월일:</label>
+        <input type="text" class="form-control" id="birthDate" name="birthDate" value="[[${user.birthDate}]]" placeholder="ex)1997-01-01" required>
+      </div>
+
+      <!-- 사용자명 수정 필드 -->
+      <div class="form-group mt-3">
+        <label for="username">아이디:</label>
+        <input type="text" class="form-control" id="username" name="username" value="[[${user.username}]]" required readonly>
+      </div>
+
+      <!-- 비밀번호 수정 필드 -->
+      <div class="form-group mt-3">
+        <label for="password">비밀번호:</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="새 비밀번호를 입력하세요">
+      </div>
+
+      <!-- 이메일 수정 필드 -->
+      <div class="form-group mt-3">
+        <label for="email">이메일:</label>
+        <input type="email" class="form-control" id="email" name="email" value="[[${user.email}]]" required>
+      </div>
+
+      <!-- 성별 수정 필드 -->
+      <div class="form-group mt-3">
+        <label for="gender">성별:</label>
+        <input type="text" class="form-control" id="gender" name="gender" value="[[${user.gender}]]" required>
+      </div>
+
+      <!-- 지역 수정 필드 -->
+      <div class="form-group mt-3">
+        <label for="city">시:</label>
+        <input type="text" class="form-control" id="city" name="city" value="[[${user.city}]]" required>
+      </div>
+
+      <!-- 지역 구 수정 필드 -->
+      <div class="form-group mt-3">
+        <label for="state">구:</label>
+        <input type="text" class="form-control" id="state" name="state" value="[[${user.state}]]" required>
+      </div>
+
+      <!-- 저장 및 취소 버튼 -->
+      <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">저장</button>
+        <button type="reset" class="btn btn-secondary">취소</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<script layout:fragment="script" th:inline="javascript">
+</script>
+
+</html>

@@ -36,6 +36,18 @@ public class User {
     @Column(nullable = false, length = 10)
     private String role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Address> addresses;
+    @Column(nullable = false, length = 50)
+    private String city;
+
+    @Column(nullable = false, length = 50)
+    private String state;
+
+
+//    private Address address;
+//
+//    public void addAddress(String city, String state){
+//        Address add = new Address();
+//        add.setCity(city);
+//        add.setState(state);
+//    }
 }
